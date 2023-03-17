@@ -3,15 +3,17 @@ import 'package:my_app2/CityModel.dart';
 import 'package:my_app2/ColorsFile.dart';
 
 class CityScreen extends StatelessWidget {
+  CityScreen({super.key});
+  List<CityModel> mList = [CityModel("Bangalore", "3327"), CityModel("Hyd", "2232")];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text("City Screen"),
       ),
-      body:  Column(
-        children: const [
-          Padding(
+      body:  Container( margin: EdgeInsets.all(16), child:Column(
+        children:  [
+          const Padding(
             padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
             child: TextField(
               decoration: InputDecoration(
@@ -19,30 +21,38 @@ class CityScreen extends StatelessWidget {
                 hintText: 'Enter City Name',
               ),
             ),
+
           ),
+          //  SizedBox(height: 5,),
+          Expanded(
+                  child: ListView.builder(itemCount: mList.length,itemBuilder: (context, index) {
+                    return cityItems(context, mList[index] );} ))
+
 
         ],
       ),
+    ));
+  }
+
+}
+
+Widget cityItems(BuildContext context, CityModel item) {
+  return
+    Card(
+      child: Row(
+        children: [
+          InkWell(
+            child: Padding(padding: EdgeInsets.all(16),
+                child:Container(child: Text("City  : ${item.cityName}"))),
+
+            onTap:() {
+              Navigator.pop(
+                  context, item.cityName);
+
+            },
+          )
+        ],
+      ),
     );
-  }
 
-}
-
-class CityList extends StatelessWidget {
-
-
-  @override
-  Widget build(BuildContext context) {
-
-  }
-
-}
-
-Widget cityListView() {
-   List<CityModel> mList = [] ;
-  var d1 = CityModel("Bangalore", "3327");
-  var d2 = CityModel("Hyd", "2232");
-  mList.add(d1);
-  mList.add(d2);
-  return ListView()
 }
