@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:my_app2/CardLayout.dart';
 import 'package:my_app2/CityFilterLayouts.dart';
@@ -57,8 +59,12 @@ class OrderList extends StatefulWidget {
 
 class _OrderList extends State<OrderList>{
   List<OrderInfo> mList = [OrderInfo("Shift Slot", "12pm - 3pm"), OrderInfo("From ", "HKBK college road, Manyata ,Nagavara, Blr "), OrderInfo("Service Lift", "Y"), OrderInfo("To", "Marathalli, Blr")];
-  void updateItem() {
+  var click = false;
+  var show = "home";
+  void updateItem(bool clicks) {
     setState(() {
+      click = true;
+      show = "assigned";
       ScaffoldMessenger.of(context)
         ..removeCurrentSnackBar()
         ..showSnackBar(SnackBar(content: Text("pressed")));
@@ -67,8 +73,8 @@ class _OrderList extends State<OrderList>{
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(itemCount: 2, itemBuilder: (context, index) {
-      return OrderCard( updateItem: () { updateItem(); },);
+    return ListView.builder(itemCount: 2, itemBuilder: (context, index){
+      return  OrderCard(updateItem: (bool click) { updateItem(click); }, show: show,);
     });
   }
 

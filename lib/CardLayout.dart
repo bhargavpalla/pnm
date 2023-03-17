@@ -1,4 +1,6 @@
 
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:my_app2/CityModel.dart';
 import 'package:my_app2/ColorsFile.dart';
@@ -6,8 +8,9 @@ import 'package:my_app2/TagsLayout.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class OrderCard extends StatelessWidget {
-  const OrderCard({super.key, required this.updateItem});
+  const OrderCard({super.key, required this.updateItem, required this.show});
   final UpdateItem updateItem;
+  final String show;
   final orderId = "4213";
   final shiftDate = "14-10-2023";
 
@@ -68,9 +71,10 @@ class OrderCard extends StatelessWidget {
                       children: _orderDetails())
               ),
               _separator(),
-              quoteWidget("quote"),
-              quoteWidget("timer"),
-              acceptDeclineButtons(updateItem)
+              if(show == "home") quoteWidget("quote"),
+              if(show == "home") quoteWidget("timer"),
+              if(show == "home") acceptDeclineButtons(updateItem),
+              if(show == "assigned") assigned()
 
             ],
           ),
@@ -80,7 +84,7 @@ class OrderCard extends StatelessWidget {
   }
 
 }
-typedef UpdateItem = void Function();
+typedef UpdateItem = void Function(bool click);
 
 List<Widget> _orderDetails() {
   List<OrderInfo> mList = [OrderInfo("Shift Slot", "12pm - 3pm"), OrderInfo("From ", "HKBK college road, Manyata ,Nagavara, Blr "), OrderInfo("Service Lift", "Y"), OrderInfo("To", "Marathalli, Blr"),
@@ -182,7 +186,7 @@ Widget acceptDeclineButtons(UpdateItem updateItem) {
         children: [
           Expanded(child:
           ElevatedButton(
-            onPressed: () { updateItem;
+            onPressed: () { updateItem(true);
             },
             style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(Colors.white),
@@ -201,7 +205,7 @@ Widget acceptDeclineButtons(UpdateItem updateItem) {
           const SizedBox(width: 24,),
           Expanded(child:
           ElevatedButton(
-              onPressed: updateItem,
+              onPressed:() {updateItem(true);},
               style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(Colors.blue),
                   padding: MaterialStateProperty.all(const EdgeInsets.fromLTRB(32, 10, 32, 10)),
