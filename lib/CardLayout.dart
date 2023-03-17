@@ -64,7 +64,7 @@ class OrderCard extends StatelessWidget {
               Padding(
                   padding: EdgeInsets.fromLTRB(16,0,0,16),
                   child: Column(
-                      children: _orderDetails()))
+                      children: _orderDetails())),
 
             ],
           ),
