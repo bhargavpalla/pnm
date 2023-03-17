@@ -47,7 +47,6 @@ class MyHomePage extends StatelessWidget {
 }
 
 Widget HarmburgerMenu(BuildContext context) {
-  List<String> mList= ["Home", "My Orders", "Log Out"];
   return Drawer(
       child: ListView(
           children: [
@@ -63,7 +62,7 @@ Widget HarmburgerMenu(BuildContext context) {
               leading: const Icon(
                 Icons.home,
               ),
-              title: const Text('Page 1'),
+              title: const Text('Home'),
               onTap: () {
                 Navigator.pop(context);
               },
