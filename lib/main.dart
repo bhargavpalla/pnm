@@ -57,10 +57,18 @@ class OrderList extends StatefulWidget {
 
 class _OrderList extends State<OrderList>{
   List<OrderInfo> mList = [OrderInfo("Shift Slot", "12pm - 3pm"), OrderInfo("From ", "HKBK college road, Manyata ,Nagavara, Blr "), OrderInfo("Service Lift", "Y"), OrderInfo("To", "Marathalli, Blr")];
+  void updateItem() {
+    setState(() {
+      ScaffoldMessenger.of(context)
+        ..removeCurrentSnackBar()
+        ..showSnackBar(SnackBar(content: Text("pressed")));
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(itemCount: 2, itemBuilder: (context, index) {
-      return OrderCard();
+      return OrderCard( updateItem: () { updateItem(); },);
     });
   }
 

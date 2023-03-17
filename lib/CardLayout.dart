@@ -6,7 +6,8 @@ import 'package:my_app2/TagsLayout.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class OrderCard extends StatelessWidget {
-  const OrderCard({super.key});
+  const OrderCard({super.key, required this.updateItem});
+  final UpdateItem updateItem;
   final orderId = "4213";
   final shiftDate = "14-10-2023";
 
@@ -69,7 +70,7 @@ class OrderCard extends StatelessWidget {
               _separator(),
               quoteWidget("quote"),
               quoteWidget("timer"),
-              acceptDeclineButtons()
+              acceptDeclineButtons(updateItem)
 
             ],
           ),
@@ -79,6 +80,7 @@ class OrderCard extends StatelessWidget {
   }
 
 }
+typedef UpdateItem = void Function();
 
 List<Widget> _orderDetails() {
   List<OrderInfo> mList = [OrderInfo("Shift Slot", "12pm - 3pm"), OrderInfo("From ", "HKBK college road, Manyata ,Nagavara, Blr "), OrderInfo("Service Lift", "Y"), OrderInfo("To", "Marathalli, Blr"),
@@ -171,7 +173,7 @@ Widget quoteWidget(String type) {
 
 }
 
-Widget acceptDeclineButtons() {
+Widget acceptDeclineButtons(UpdateItem updateItem) {
   return Container(
 
     margin: const EdgeInsets.fromLTRB(16, 16, 16, 16),
@@ -180,7 +182,7 @@ Widget acceptDeclineButtons() {
         children: [
           Expanded(child:
           ElevatedButton(
-            onPressed: () { print("hello");
+            onPressed: () { updateItem;
             },
             style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(Colors.white),
@@ -199,7 +201,7 @@ Widget acceptDeclineButtons() {
           const SizedBox(width: 24,),
           Expanded(child:
           ElevatedButton(
-              onPressed: () {},
+              onPressed: updateItem,
               style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(Colors.blue),
                   padding: MaterialStateProperty.all(const EdgeInsets.fromLTRB(32, 10, 32, 10)),
@@ -217,3 +219,8 @@ Widget acceptDeclineButtons() {
       ));
 
 }
+
+Widget assigned() {
+  return Text("You Accepted the Order");
+}
+
