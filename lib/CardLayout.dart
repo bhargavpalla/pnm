@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:my_app2/CityModel.dart';
 import 'package:my_app2/ColorsFile.dart';
 import 'package:my_app2/TagsLayout.dart';
-
+import 'package:flutter_svg/flutter_svg.dart';
 
 class OrderCard extends StatelessWidget {
   const OrderCard({super.key});
@@ -64,7 +64,11 @@ class OrderCard extends StatelessWidget {
               Padding(
                   padding: EdgeInsets.fromLTRB(16,0,0,16),
                   child: Column(
-                      children: _orderDetails())),
+                      children: _orderDetails())
+              ),
+              _separator(),
+              quoteWidget("quote"),
+              quoteWidget("timer")
 
             ],
           ),
@@ -106,6 +110,60 @@ Widget orderItem(OrderInfo item) {
             child:Text(item.value,  style: TextStyle(fontSize: 15, color: Colors.black),))
         )
 
+      ],
+    ),
+  );
+
+}
+
+Widget _separator() {
+  return LayoutBuilder(
+    builder: (BuildContext context, BoxConstraints constraints) {
+      final boxWidth = constraints.constrainWidth();
+      const dashWidth = 8.0;
+      final dashHeight = 1.0;
+      final dashCount = (boxWidth / (2 * dashWidth)).floor();
+      return Flex(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        direction: Axis.horizontal,
+        children: List.generate(dashCount, (_) {
+          return SizedBox(
+            width: dashWidth,
+            height: dashHeight,
+            child: DecoratedBox(
+              decoration: BoxDecoration(color: AppColors.d7d7d7),
+            ),
+          );
+        }),
+      );
+    },
+  );
+}
+
+Widget quoteWidget(String type) {
+  String assetName;
+  String text;
+  if(type == "quote") {
+    assetName = 'assets/oval.svg';
+    text = "Movement Quote : Rs. 8000";
+  }
+  else {
+    assetName = 'assets/clock.svg';
+    text = "Accept Within: 30mins";
+  }
+  final Widget svg = SvgPicture.asset(
+      assetName,
+      semanticsLabel: 'Acme Logo'
+  );
+  return Container(
+    margin: const EdgeInsets.fromLTRB(20, 15.5, 16, 0),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        svg,
+         Padding(padding: const EdgeInsets.fromLTRB(12, 0, 0, 0),
+        child: Text(text),
+        )
       ],
     ),
   );
