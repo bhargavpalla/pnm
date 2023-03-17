@@ -196,7 +196,7 @@ Widget acceptDeclineButtons() {
               'Cancel',textAlign: TextAlign.center, style: TextStyle(color: Colors.black, fontSize: 14), textScaleFactor: 1,
             ),
           )),
-          const SizedBox(width: 16,),
+          const SizedBox(width: 24,),
           Expanded(child:
           ElevatedButton(
               onPressed: () {},
