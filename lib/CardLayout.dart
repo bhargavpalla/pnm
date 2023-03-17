@@ -184,7 +184,7 @@ Widget acceptDeclineButtons() {
             },
             style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(Colors.white),
-                padding: MaterialStateProperty.all(const EdgeInsets.fromLTRB(32, 8, 32, 8)),
+                padding: MaterialStateProperty.all(const EdgeInsets.fromLTRB(32, 10, 32, 10)),
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
@@ -202,7 +202,7 @@ Widget acceptDeclineButtons() {
               onPressed: () {},
               style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(Colors.blue),
-                  padding: MaterialStateProperty.all(const EdgeInsets.fromLTRB(32, 8, 32, 8)),
+                  padding: MaterialStateProperty.all(const EdgeInsets.fromLTRB(32, 10, 32, 10)),
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                       RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),

@@ -30,18 +30,65 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Order Pool"),
+        appBar: AppBar(
+          title: Text("Order Pool"),
 
-      ),
-    body: Column(
-      children: [
-        CityFiltersWidget(),
-        SizedBox(height: 16,),
-        OrderCard()
-      ],
-    )
+        ),
+        drawer: HarmburgerMenu(context),
+        body: Column(
+          children: [
+            CityFiltersWidget(),
+            SizedBox(height: 16,),
+            OrderCard()
+          ],
+        )
     );
   }
 }
+
+Widget HarmburgerMenu(BuildContext context) {
+  List<String> mList= ["Home", "My Orders", "Log Out"];
+  return Drawer(
+      child: ListView(
+          children: [
+            const UserAccountsDrawerHeader(
+                accountName: Text("Hello Bhargav", style: TextStyle(fontWeight: FontWeight.bold),)
+              , accountEmail: Text("bhargav@flutter.com"),
+              currentAccountPicture: Image(image: AssetImage('assets/launcher.png')),
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
+            ),
+            ListTile(
+              leading: const Icon(
+                Icons.home,
+              ),
+              title: const Text('Page 1'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+
+            ListTile(
+              leading: const Icon(
+                Icons.book_online_sharp,
+              ),
+              title: const Text('My Orders'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: const Icon(
+                Icons.logout_sharp,
+              ),
+              title: const Text('Log Out'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+          ]
+      ));
+}
+
 
