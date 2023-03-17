@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:my_app2/CardLayout.dart';
 import 'package:my_app2/CityFilterLayouts.dart';
 
+import 'CityModel.dart';
 import 'TagsLayout.dart';
 
 void main() {
@@ -39,11 +40,30 @@ class MyHomePage extends StatelessWidget {
           children: [
             CityFiltersWidget(),
             SizedBox(height: 16,),
-            OrderCard()
+            Expanded(child: OrderList())
           ],
         )
     );
   }
+}
+
+class OrderList extends StatefulWidget {
+  const OrderList({super.key});
+
+  @override
+  _OrderList createState() => _OrderList();
+
+}
+
+class _OrderList extends State<OrderList>{
+  List<OrderInfo> mList = [OrderInfo("Shift Slot", "12pm - 3pm"), OrderInfo("From ", "HKBK college road, Manyata ,Nagavara, Blr "), OrderInfo("Service Lift", "Y"), OrderInfo("To", "Marathalli, Blr")];
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(itemCount: 2, itemBuilder: (context, index) {
+      return OrderCard();
+    });
+  }
+
 }
 
 Widget HarmburgerMenu(BuildContext context) {
