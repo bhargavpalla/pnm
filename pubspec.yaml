@@ -97,4 +97,6 @@ flutter:
     - assets/oval.svg
     - assets/clock.svg
     - assets/launcher.png
+    - assets/home.png
+    - assets/my_orders.png
 

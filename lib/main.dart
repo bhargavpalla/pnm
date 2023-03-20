@@ -38,6 +38,12 @@ class MyHomePage extends StatelessWidget {
 
         ),
         drawer: HarmburgerMenu(context),
+        bottomNavigationBar: BottomNavigationBar(items: const [
+          BottomNavigationBarItem(icon: Image(image: AssetImage('assets/home.png')),label: "Home"),
+          BottomNavigationBarItem(icon: Image(image: AssetImage('assets/my_orders.png')), label : "My Orders"),
+
+        ]),
+
         body: Column(
           children: [
             CityFiltersWidget(),
