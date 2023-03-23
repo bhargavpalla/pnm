@@ -5,16 +5,18 @@ import 'package:my_app2/controllers/HomeProvider.dart';
 import 'package:my_app2/model/ListModel.dart';
 import 'package:my_app2/repo/HomeRepo.dart';
 
-class HomeController {
+class HomeController extends GetxController with StateMixin{
   HomeController(this.homeProvider);
   final HomeProvider homeProvider;
-  var id = <ListModel>[].obs;
 
   void fetchList() {
+    change(null, status: RxStatus.loading());
 
     homeProvider.getData().then((product) {
-      id(product as List<ListModel>?);
-      print('$id fgf');
+      change(product, status: RxStatus.success());
+      print(product.list);
+    }).catchError((error) {
+      change(null, status: RxStatus.error(error.toString()));
     });
   }
 
