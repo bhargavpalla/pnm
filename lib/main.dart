@@ -3,8 +3,10 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:my_app2/CardLayout.dart';
 import 'package:my_app2/CityFilterLayouts.dart';
+import 'package:get/get.dart';
 
 import 'CityModel.dart';
+import 'Routes.dart';
 import 'TagsLayout.dart';
 
 void main() {
@@ -17,12 +19,14 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Flutter Demo',
+      getPages: Routes.routes,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(),
+      initialRoute: Routes.INITIAl,
+
     );
   }
 }

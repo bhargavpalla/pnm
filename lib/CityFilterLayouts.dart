@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:my_app2/CityScreen.dart';
 import 'package:my_app2/ColorsFile.dart';
 import 'package:my_app2/main.dart';
+
+import 'Routes.dart';
 
 
 class CityFiltersWidget extends StatelessWidget {
@@ -16,10 +20,11 @@ class CityFiltersWidget extends StatelessWidget {
           Expanded(
             child:GestureDetector(
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => CityScreen())).then((value) => ScaffoldMessenger.of(context)
-                  ..removeCurrentSnackBar()
-                  ..showSnackBar(SnackBar(content: Text(value))));
+                Get.toNamed(Routes.CITY)?.then((value) => Get.snackbar(value, ""));
+                // Navigator.push(context,
+                //     MaterialPageRoute(builder: (context) => CityScreen())).then((value) => ScaffoldMessenger.of(context)
+                //   ..removeCurrentSnackBar()
+                //   ..showSnackBar(SnackBar(content: Text(value))));
               },
               child: Container(
                 alignment: AlignmentDirectional.topStart,
