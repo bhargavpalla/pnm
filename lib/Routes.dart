@@ -9,6 +9,5 @@ class Routes {
   static final routes = [
     GetPage(name: '/home', page: () => MyHomePage()),
     GetPage(name: '/city', page: () => CityScreen()),
-
   ];
 }

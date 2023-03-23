@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:my_app2/CityScreen.dart';
 import 'package:my_app2/ColorsFile.dart';
+import 'package:my_app2/controllers/HomeController.dart';
 import 'package:my_app2/main.dart';
 
 import 'Routes.dart';
@@ -10,6 +11,8 @@ import 'Routes.dart';
 
 class CityFiltersWidget extends StatelessWidget {
   CityFiltersWidget({super.key});
+  final HomeController _homeController = Get.find();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -20,7 +23,8 @@ class CityFiltersWidget extends StatelessWidget {
           Expanded(
             child:GestureDetector(
               onTap: () {
-                Get.toNamed(Routes.CITY)?.then((value) => Get.snackbar(value, ""));
+                _homeController.fetchList();
+                //Get.toNamed(Routes.CITY)?.then((value) => Get.snackbar(value, ""));
                 // Navigator.push(context,
                 //     MaterialPageRoute(builder: (context) => CityScreen())).then((value) => ScaffoldMessenger.of(context)
                 //   ..removeCurrentSnackBar()

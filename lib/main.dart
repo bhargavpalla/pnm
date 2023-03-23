@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:my_app2/CardLayout.dart';
 import 'package:my_app2/CityFilterLayouts.dart';
 import 'package:get/get.dart';
+import 'package:my_app2/controllers/HomeBinding.dart';
 
 import 'CityModel.dart';
 import 'Routes.dart';
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       initialRoute: Routes.INITIAl,
+      initialBinding: HomeBinding(),
 
     );
   }
