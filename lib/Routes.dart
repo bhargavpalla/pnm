@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:my_app2/CityScreen.dart';
-import 'package:my_app2/main.dart';
+import 'package:my_app2/views/CityScreen.dart';
+import 'package:my_app2/views/main.dart';
 
 class Routes {
   static final INITIAl = '/home';

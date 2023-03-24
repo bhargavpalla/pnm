@@ -1,15 +1,12 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
-import 'package:my_app2/CardLayout.dart';
-import 'package:my_app2/CityFilterLayouts.dart';
+import 'package:my_app2/views/CardLayout.dart';
+import 'package:my_app2/views/CityFilterLayouts.dart';
 import 'package:get/get.dart';
 import 'package:my_app2/controllers/HomeBinding.dart';
 
-import 'CityModel.dart';
-import 'Routes.dart';
-import 'TagsLayout.dart';
-import 'controllers/HomeController.dart';
+import '../Routes.dart';
 
 void main() {
   runApp(const MyApp());

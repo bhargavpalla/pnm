@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:my_app2/CityScreen.dart';
 import 'package:my_app2/ColorsFile.dart';
 import 'package:my_app2/controllers/HomeController.dart';
-import 'package:my_app2/main.dart';
 
-import 'Routes.dart';
+import '../Routes.dart';
 
 
 class CityFiltersWidget extends StatelessWidget {

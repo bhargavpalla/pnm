@@ -6,10 +6,10 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:my_app2/CityModel.dart';
 import 'package:my_app2/ColorsFile.dart';
-import 'package:my_app2/TagsLayout.dart';
+import 'package:my_app2/views/TagsLayout.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import 'controllers/HomeController.dart';
+import '../controllers/HomeController.dart';
 
 
 class OrderList extends GetView<HomeController> {
