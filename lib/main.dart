@@ -9,6 +9,7 @@ import 'package:my_app2/controllers/HomeBinding.dart';
 import 'CityModel.dart';
 import 'Routes.dart';
 import 'TagsLayout.dart';
+import 'controllers/HomeController.dart';
 
 void main() {
   runApp(const MyApp());
@@ -36,6 +37,8 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatelessWidget {
 
+
+   const MyHomePage({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,43 +57,21 @@ class MyHomePage extends StatelessWidget {
           children: [
             CityFiltersWidget(),
             SizedBox(height: 16,),
-            Expanded(child: OrderList())
-          ],
+            Expanded(child:OrderList())          ],
         )
     );
   }
 }
 
-class OrderList extends StatefulWidget {
-  const OrderList({super.key});
+// class OrderList extends StatefulWidget {
+//   const OrderList({super.key});
+//
+//   @override
+//  // _OrderList createState() => _OrderList();
+//
+// }
 
-  @override
-  _OrderList createState() => _OrderList();
 
-}
-
-class _OrderList extends State<OrderList>{
-  List<OrderInfo> mList = [OrderInfo("Shift Slot", "12pm - 3pm"), OrderInfo("From ", "HKBK college road, Manyata ,Nagavara, Blr "), OrderInfo("Service Lift", "Y"), OrderInfo("To", "Marathalli, Blr")];
-  var click = false;
-  var show = "home";
-  void updateItem(bool clicks) {
-    setState(() {
-      click = true;
-      show = "assigned";
-      ScaffoldMessenger.of(context)
-        ..removeCurrentSnackBar()
-        ..showSnackBar(SnackBar(content: Text("pressed")));
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(itemCount: 2, itemBuilder: (context, index){
-      return  OrderCard(updateItem: (bool click) { updateItem(click); }, show: show,);
-    });
-  }
-
-}
 
 Widget HarmburgerMenu(BuildContext context) {
   return Drawer(
