@@ -12,12 +12,6 @@ class HomeBinding extends Bindings {
     Get.lazyPut<HomeController>(() => HomeController(Get.find()));
     Get.lazyPut<HomeProvider>(() => HomeProvider(Get.find()));
     Get.lazyPut<HomeRepo>(() => HomeRepo(Get.find()));
-    // Get.lazyPut<ApiService>(() => ApiService(Get.find()));
-    // Get.lazyPut<BaseProvider>(() => BaseProvider(Get.find()));
-    Get.put(BaseProvider(), permanent: true);
-    Get.put(ApiService(Get.find()), permanent: true);
-
-
   }
 
 }
