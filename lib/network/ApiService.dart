@@ -20,13 +20,13 @@ class ApiService {
 
   Future<JSON> post<T>({
     required String endpoint,
-    JSON? body,
+    required JSON body,
     JSON? query,
     Map<String, String>? headers,
     bool requiresAuthToken = false,
   }) async {
     final response = await _baseProvider.post(endpoint, body,
-        headers: _buildHeaders(false, headers), query: query);
+        headers: pnmHeaders(), query: query);
 
     return response.body;
   }
@@ -48,5 +48,14 @@ class ApiService {
       customHeaders.addAll(headers);
     }
     return customHeaders;
+  }
+
+
+  Map<String, String> pnmHeaders() {
+    var extraHeaders = Map<String, String>();
+    extraHeaders["MB-RENTAL-AGREEMENT"] = "1";
+    extraHeaders["token"] = "";
+    return extraHeaders;
+
   }
 }
