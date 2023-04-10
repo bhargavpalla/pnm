@@ -41,7 +41,6 @@ class Login extends GetView<LoginController> {
               return Container(
               margin:  const EdgeInsets.fromLTRB(30, 0, 30, 0),
               child:   TextField(
-                  controller: myController,
                   decoration: const InputDecoration(
                     labelText: "Enter OTP",
                   ),
