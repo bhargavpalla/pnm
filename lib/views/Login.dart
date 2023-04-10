@@ -35,7 +35,9 @@ class Login extends GetView<LoginController> {
 
             ),
             const SizedBox(height: 20,),
-            Obx(() { if(controller.geneStatus.value?.generatedOTPStatus == true) {
+            Obx(() {
+              if( controller.model.length>0) {
+              if(controller.model.value[0].generatedOTPStatus == true) {
               return Container(
               margin:  const EdgeInsets.fromLTRB(30, 0, 30, 0),
               child:   TextField(
@@ -50,7 +52,10 @@ class Login extends GetView<LoginController> {
               ),
 
             );
-            }
+            }else {
+              return Container(child: SizedBox(height:1 ,),);
+              }
+              }
             else {
               return Container(child: SizedBox(height:1 ,),);
             }

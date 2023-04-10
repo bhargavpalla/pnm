@@ -6,7 +6,7 @@ import '../../model/OtpResponseModel.dart';
 class LoginController extends GetxController with StateMixin {
 
   final LoginProvider loginProvider;
-  late  OtpResponseModel? model = null.obs as OtpResponseModel?;
+  var  model = <OtpResponseModel>[].obs;
   late Rx<OtpResponseModel?> geneStatus = null.obs;
   LoginController(this.loginProvider) ;
    //   geneStatus = model.obs;
@@ -15,7 +15,7 @@ class LoginController extends GetxController with StateMixin {
   void generateOtp(String mobile) {
     loginProvider.generateOtpApi(mobile).then((product) {
       //loginProvider.generateOtpApi(mobile);
-      model = product;
+      model.add(product!);
       geneStatus.value = product;
       print(geneStatus.value?.generatedOTPStatus);
     });
